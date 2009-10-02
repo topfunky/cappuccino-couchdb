@@ -3,7 +3,7 @@ CouchDB Library for Cappuccino
 
 More information, installation instructions, etc. coming soon.
 
-![Demo](http://github.com/topfunky/cappuccino-couchdb/raw/master/Artwork/demo-screenshot.png)
+![Demo Screenshot](http://topfunky.github.com/cappuccino-couchdb/images/demo-screenshot.png)
 
 ## Running the Demo
 
@@ -34,7 +34,23 @@ Copy the Classes/CouchDB directory and contents to your Cappuccino app.
 
     @import "CouchDB/CouchDB.j"
 
+The class was designed to mimic CouchDB's jquery.couch.js
+(couchdb/trunk/share/www/script/jquery.couch.js). So some parts use
+Javascript features rather than Objective-J features (inline function
+callbacks, hash options).
+
 More documentation coming soon. In the meantime, see AppController.j.
+
+## Known Bugs
+
+* CouchDB treats a + in a filename as a space on disk, so naming
+  Objective-C categories as CPDictionary+ParamUtils.j will
+  fail. Hopefully this will be fixed in a future release of CouchDB.
+
+## TODO
+
+* Better error handling and callbacks
+* Examples of usage with a native Objective-J model.
 
 ## Author
 
