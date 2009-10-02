@@ -1,10 +1,9 @@
 @import <AppKit/CPCollectionView.j>
 
+/**
+   Full-featured collection view with pre-defined item prototype styles.
 
-/*
-  Full-featured collection view with pre-defined item prototype styles.
-
-  TODO: Wrap in scrollview.
+   See the Subtitle view in the same directory.
 */
 
 @implementation TFCollectionView : CPCollectionView
@@ -15,23 +14,21 @@
                       parentView:(CPView)theParentView
                         delegate:(id)theDelegate
 {
-    // TODO: Wrap in a scrollview
-    self = [super initWithFrame:[theParentView frame]];
-    if (self)
-    {
-        [self setDelegate:theDelegate];
-        [self setBackgroundColor:[CPColor colorWithHexString:@"F2F2F2"]];
-        [self setMinItemSize:CGSizeMake(0.0, 43.0)];
-        [self setMaxItemSize:CGSizeMake(10000.0, 43.0)];
-        [self setAllowsMultipleSelection:NO];
-        [self setAutoresizingMask:CPViewWidthSizable|CPViewHeightSizable];
-        [self setMaxNumberOfColumns:1];
-        [self setVerticalMargin:1];
+    if (![super initWithFrame:[theParentView frame]])
+        return nil;
 
-        var theItemPrototype = [[CPCollectionViewItem alloc] init];
-        [theItemPrototype setView:[[theItemPrototypeClass alloc] initWithFrame:CGRectMakeZero()]];
-        [self setItemPrototype:theItemPrototype];
-    }
+    [self setDelegate:theDelegate];
+    [self setBackgroundColor:[CPColor colorWithHexString:@"F2F2F2"]];
+    [self setMinItemSize:CGSizeMake(0.0, 43.0)];
+    [self setMaxItemSize:CGSizeMake(10000.0, 43.0)];
+    [self setAllowsMultipleSelection:NO];
+    [self setAutoresizingMask:CPViewWidthSizable|CPViewHeightSizable];
+    [self setMaxNumberOfColumns:1];
+    [self setVerticalMargin:1];
+
+    var theItemPrototype = [[CPCollectionViewItem alloc] init];
+    [theItemPrototype setView:[[theItemPrototypeClass alloc] initWithFrame:CGRectMakeZero()]];
+    [self setItemPrototype:theItemPrototype];
 
     return self;
 }

@@ -1,3 +1,11 @@
+/*
+ * CouchDB.j
+ * cappuccino-couchdb
+ *
+ * Created by Geoffrey Grosenbach on October 1, 2009.
+ * MIT Licensed.
+ */
+
 @import <Foundation/CPObject.j>
 // TODO: CouchDB incorrectly serves files with a + in the path. Should file a bug.
 @import "CPDictionary-ParamUtils.j"
@@ -269,8 +277,16 @@
 
 - (void)connection:(CPURLConnection)connection didFailWithError:(CPString)error
 {
+    [self respondWithError:{error:"connection_failed", reason:error}];
+}
+
+// TODO: jquery.couch.js error is (status, error, reason)
+- (void)respondWithError:(JSObject)error
+{
     if (options.error)
         options.error(error);
+    else
+        alert("Sorry, an error occurred: " + error.reason);
 }
 
 // Other delegate methods
@@ -282,18 +298,17 @@
 {
     try
     {
-//         console.log(data);
+        // console.log(data);
         var responseObject = [data objectFromJSON];
-        // TODO: Should throw error if key is present, 
-        // but ignore errors for some requests like dropping a database.
-        //         if (responseObject.error)
-        //         {
-        //             [self connection:aConnection didFailWithError:responseObject.reason];
-        //             return;
-        //         }
-        if (options.success)
+        if (responseObject.error)
+        {
+            [self respondWithError:responseObject];
+            return;
+        }
+        else if (options.success)
+        {
             options.success(responseObject);
-
+        }
     }
     catch (anException)
     {

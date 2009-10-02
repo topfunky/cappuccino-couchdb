@@ -1,6 +1,14 @@
+/*
+ * CPDictionary+ParamUtils.j
+ * cappuccino-couchdb
+ *
+ * Created by Geoffrey Grosenbach on October 1, 2009.
+ * MIT Licensed.
+ */
+
 @import <Foundation/CPDictionary.j>
 
-// From the HTTPRiot project by Justin Palmer.
+// Translated from the HTTPRiot project by Justin Palmer.
 // http://github.com/Caged/httpriot/blob/master/Source/HTTPRiot/Extensions/NSDictionary+ParamUtils.m
 
 @implementation CPDictionary (ParamUtils)
