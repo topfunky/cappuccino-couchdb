@@ -282,10 +282,18 @@
 {
     try
     {
-        // console.log(data);
+//         console.log(data);
         var responseObject = [data objectFromJSON];
+        // TODO: Should throw error if key is present, 
+        // but ignore errors for some requests like dropping a database.
+        //         if (responseObject.error)
+        //         {
+        //             [self connection:aConnection didFailWithError:responseObject.reason];
+        //             return;
+        //         }
         if (options.success)
             options.success(responseObject);
+
     }
     catch (anException)
     {

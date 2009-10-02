@@ -98,6 +98,7 @@
             }
         }];
 
+    // TODO: Fails if the db exists. Needs to respond to errors.
     var mirror = [CouchDB couchWithDatabase:"cappuccino-couchdb-test-mirror"];
     [mirror create:{
         success:function(doc) {
