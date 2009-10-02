@@ -3,7 +3,7 @@ CouchDB Library for Cappuccino
 
 More information, installation instructions, etc. coming soon.
 
-!(Demo)[/topfunky/cappuccino-couchdb/raw/master/Artwork/demo-screenshot.png]
+![Demo](http://github.com/topfunky/cappuccino-couchdb/raw/master/Artwork/demo-screenshot.png)
 
 ## Running the Demo
 
