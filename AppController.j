@@ -117,15 +117,6 @@
 
 - (void)runInstanceMethods
 {
-    [couchdb compact:{
-        success: function(doc) {
-                var result = {text:"Database: Compact",
-                              detailText:"Compacted: " + doc.ok,
-                              pass:YES};
-                [self addResult:result];
-            }
-        }];
-
     [couchdb info:{
         success: function(doc) {
                 var result = {text:"Database: Info",
@@ -144,6 +135,16 @@
                 [self addResult:result];
             }
         }];
+
+    // NOTE: Compacting the database seems to confuse other concurrent demos.
+    //     [couchdb compact:{
+    //         success: function(doc) {
+    //                 var result = {text:"Database: Compact",
+    //                               detailText:"Compacted: " + doc.ok,
+    //                               pass:YES};
+    //                 [self addResult:result];
+    //             }
+    //         }];
 
 }
 
