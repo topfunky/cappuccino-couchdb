@@ -312,7 +312,7 @@
     }
     catch (anException)
     {
-        [self connection:aConnection didFailWithError:"JSON response was blank."];
+        [self connection:aConnection didFailWithError:anException];
     }
 }
 
